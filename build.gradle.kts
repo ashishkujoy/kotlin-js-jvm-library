@@ -58,11 +58,18 @@ kotlin {
 
         }
 
+        val jsTest by getting {
+            dependencies {
+                implementation("io.kotest:kotest-framework-engine:$kotestVersion")
+            }
+        }
+
         val jvmTest by getting {
             dependencies {
                 implementation("io.kotest:kotest-runner-junit5:$kotestVersion")
             }
         }
+
     }
 }
 
