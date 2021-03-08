@@ -1,8 +1,7 @@
-import org.jetbrains.kotlin.gradle.targets.js.npm.packageJson
-
 plugins {
-
+    java
     kotlin("multiplatform") version "1.4.31"
+    id("java-library")
 }
 
 group = "org.example"
@@ -39,15 +38,29 @@ kotlin {
     }
 
     sourceSets {
+        val kotestVersion = "4.4.3"
+
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-common"))
             }
         }
+
+        val jvmMain by getting {
+            dependsOn(commonMain)
+        }
+
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation("io.kotest:kotest-framework-api:$kotestVersion")
+                implementation("io.kotest:kotest-assertions-core:$kotestVersion")
+            }
+
+        }
+
+        val jvmTest by getting {
+            dependencies {
+                implementation("io.kotest:kotest-runner-junit5:$kotestVersion")
             }
         }
     }
@@ -56,4 +69,21 @@ kotlin {
 tasks.named<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>("compileKotlinJs").configure {
     kotlinOptions.moduleKind = "commonjs"
 }
+
+tasks.named<Test>("jvmTest") {
+    useJUnitPlatform()
+    filter {
+        isFailOnNoMatchingTests = false
+    }
+    testLogging {
+        showExceptions = true
+        showStandardStreams = true
+        events = setOf(
+            org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
+            org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
+        )
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+    }
+}
+
 
