@@ -1,11 +1,13 @@
-plugins {
+plugins{
+//    id("com.jfrog.artifactory") version "4.15.2"
+    id("maven-publish")
     java
     kotlin("multiplatform") version "1.4.31"
     id("java-library")
 }
 
-group = "org.example"
-version = "1.0.0"
+group = "org.learning"
+version = "1.0.5"
 
 repositories {
     mavenCentral()
@@ -92,5 +94,15 @@ tasks.named<Test>("jvmTest") {
         exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     }
 }
+
+publishing {
+
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
+}
+
 
 

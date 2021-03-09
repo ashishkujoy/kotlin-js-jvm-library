@@ -1,3 +1,5 @@
+package org.learning
+
 import kotlin.js.JsName
 
 class Mathematics {

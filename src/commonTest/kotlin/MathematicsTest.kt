@@ -1,5 +1,6 @@
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import org.learning.Mathematics
 
 class MathematicsTest : StringSpec({
     val mathematics = Mathematics()
