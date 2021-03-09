@@ -19,8 +19,4 @@ class MathematicsTest : StringSpec({
     "should divide two numbers" {
         mathematics.divide(6, 2) shouldBe 3
     }
-
-    "a test which should fail" {
-        mathematics.add(1, 1) shouldBe 11
-    }
 })
