@@ -1,3 +1,5 @@
+@file:JsExport
+
 package org.learning
 
 external fun require(module: String): dynamic

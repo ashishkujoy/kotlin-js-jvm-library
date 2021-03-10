@@ -1,5 +1,4 @@
 plugins{
-//    id("com.jfrog.artifactory") version "4.15.2"
     id("maven-publish")
     java
     kotlin("multiplatform") version "1.4.31"
@@ -7,19 +6,16 @@ plugins{
 }
 
 group = "org.learning"
-version = "1.0.5"
+version = "1.0.6"
 
 repositories {
     mavenCentral()
 }
 
 kotlin {
-    /* Targets configuration omitted. 
-    *  To find out how to configure the targets, please follow the link:
-    *  https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-targets */
-
     targets {
-        js {
+        js(org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.IR) {
+            binaries.library()
             nodejs {
                 compilations.all {
                     packageJson {
@@ -27,8 +23,8 @@ kotlin {
                     }
                 }
             }
-
         }
+
         jvm {
             compilations.all {
                 kotlinOptions.jvmTarget = "1.8"
@@ -103,6 +99,3 @@ publishing {
         }
     }
 }
-
-
-

@@ -1,8 +1,9 @@
+@file:JsExport
 package org.learning
 
 import org.learning.domain.Address
+import kotlin.js.JsExport
 import kotlin.js.JsName
-
 
 class DemogValidator {
     private val specialCharPattern = Regex("[@#^&():;|<>\\-./,{}=_~\\[\\] ]+")
