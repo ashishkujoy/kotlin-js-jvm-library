@@ -30,7 +30,7 @@ kotlin {
                 kotlinOptions.jvmTarget = "1.8"
             }
             testRuns["test"].executionTask.configure {
-                useJUnitPlatform()
+                useJUnit()
             }
         }
     }
@@ -50,7 +50,8 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation("io.kotest:kotest-framework-api:$kotestVersion")
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
                 implementation("io.kotest:kotest-assertions-core:$kotestVersion")
             }
 
@@ -58,13 +59,13 @@ kotlin {
 
         val jsTest by getting {
             dependencies {
-                implementation("io.kotest:kotest-framework-engine:$kotestVersion")
+                implementation(kotlin("test-js"))
             }
         }
 
         val jvmTest by getting {
             dependencies {
-                implementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+                implementation(kotlin("test-junit"))
             }
         }
 
