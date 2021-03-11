@@ -14,8 +14,8 @@ repositories {
 
 kotlin {
     targets {
-        js(org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.IR) {
-            binaries.library()
+        js {
+//            binaries.library()
             nodejs {
                 compilations.all {
                     packageJson {
