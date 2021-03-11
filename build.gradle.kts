@@ -10,6 +10,7 @@ version = "1.0.6"
 
 repositories {
     mavenCentral()
+    maven("https://oss.sonatype.org/content/repositories/snapshots")
 }
 
 kotlin {
@@ -36,7 +37,7 @@ kotlin {
     }
 
     sourceSets {
-        val kotestVersion = "4.4.3"
+        val kotestVersion = "4.6.0.166-SNAPSHOT"
 
         val commonMain by getting {
             dependencies {
