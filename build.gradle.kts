@@ -77,7 +77,7 @@ tasks.named<org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile>("compileKotlinJs").
 }
 
 tasks.named<Test>("jvmTest") {
-    useJUnitPlatform()
+    useJUnit()
     filter {
         isFailOnNoMatchingTests = false
     }
