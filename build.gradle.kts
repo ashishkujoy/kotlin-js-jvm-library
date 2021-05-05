@@ -37,7 +37,7 @@ kotlin {
     }
 
     sourceSets {
-        val kotestVersion = "4.6.0.166-SNAPSHOT"
+        val kotestVersion = "4.5.0"
 
         val commonMain by getting {
             dependencies {
